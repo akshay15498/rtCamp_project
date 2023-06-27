@@ -80,3 +80,55 @@ if curl --output /dev/null --silent --head --fail "http://15.152.40.162:8000"; t
 else
   echo "http://15.152.40.162:8000 is currently unreachable or experiencing issues."
 fi
+
+
+start_containers() {
+  echo "Starting containers for wordpress"
+  # Code to start the container
+  docker start wordpress_container
+  docker start mysql_container	
+  echo "Containers started successfully."
+}
+
+stop_containers() {
+  echo "Stopping containers for wordpress"
+  # Code to stop the containers
+  docker stop wordpress_container
+  docker stop mysql_container
+
+  echo "Containers stopped successfully."
+}
+
+enable_site() {
+  start_containers
+}
+
+delete_site() {
+  stop_containers
+  echo "Deleting site wordpress"
+  # Code to delete containers and local files
+  docker rm wordpress_container
+  docker rm mysql_container
+
+  rm -rf /home/ubuntu/rtcamp/project/rtCamp_project/wordpress
+  echo "Site deleted successfully."
+}
+
+case "$1" in
+  "start")
+    start_containers
+    ;;
+  "stop")
+    stop_containers
+    ;;
+  "enable")
+    enable_site
+    ;;
+  "delete")
+    delete_site
+    ;;
+  *)
+    echo "Invalid command. Usage: $0 [start|stop|enable|delete]"
+    exit 1
+    ;;
+esac
