@@ -15,26 +15,26 @@ chmod +x project.sh
 
 ## Available commands: ##
 
-./project start: Starts the WordPress containers.
-./project stop: Stops the WordPress containers.
-./project delete: Stops and deletes the WordPress site containers and local files.
+./project.sh start : Starts the WordPress containers. <br />
+./project.sh stop : Stops the WordPress containers.<br />
+./project.sh delete : Stops and deletes the WordPress site containers and local files.<br />
 
 ## Script Explanation ##
 The script performs the following steps:
 
-Checks if Docker is installed. If not, it installs Docker and adds the current user to the docker group.
-Checks if Docker Compose is installed. If not, it installs Docker Compose.
-Prompts the user to enter a site name and creates a directory with the specified name.
-Creates a docker-compose.yml file in the site directory with the necessary configurations for MySQL and WordPress containers.
-Starts the containers using Docker Compose.
-Checks if the WordPress site is reachable by sending an HTTP request to the specified IP and port.
-Provides additional commands to manage the site:
-start: Starts the WordPress containers.
-stop: Stops the WordPress containers.
-delete: Stops and deletes the WordPress site containers and local files.
+1) Checks if Docker is installed. If not, it installs Docker and adds the current user to the docker group.<br />
+2) Checks if Docker Compose is installed. If not, it installs Docker Compose.<br />
+3) Prompts the user to enter a site name and creates a directory with the specified name.<br />
+4) Creates a docker-compose.yml file in the site directory with the necessary configurations for MySQL and WordPress containers.<br />
+5) Starts the containers using Docker Compose.<br />
+6) Checks if the WordPress site is reachable by sending an HTTP request to the specified IP and port.<br />
+7) Provides additional commands to manage the site:<br />
+8) start: Starts the WordPress containers.<br />
+9) stop: Stops the WordPress containers.<br />
+10) delete: Stops and deletes the WordPress site containers and local files.<br />
 
 ## Notes
-You may need to modify the IP address (15.152.40.162) in the script to match your own server's IP address or domain name.
-The script assumes it is running as a user with sufficient permissions to execute Docker-related commands.
-Take caution when using the delete command, as it permanently deletes the site containers and local files.
-Feel free to modify and adapt the script to suit your specific needs.
+You may need to modify the IP address (15.152.40.162) in the script to match your own server's IP address or domain name.<br />
+The script assumes it is running as a user with sufficient permissions to execute Docker-related commands.<br />
+Take caution when using the delete command, as it permanently deletes the site containers and local files.<br />
+Feel free to modify and adapt the script to suit your specific needs.<br />
