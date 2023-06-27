@@ -1,32 +1,40 @@
-# WordPress Site Creation Script
-This script allows you to create a WordPress site using the latest WordPress version in a LEMP stack running inside containers (Docker). It provides commands to enable/disable the site, as well as delete the site.
-## Installation
+## Bash Script for Setting Up WordPress with Docker Compose ##
+This script automates the setup of a WordPress site using Docker and Docker Compose. It installs Docker and Docker Compose if they are not already installed, creates a WordPress site with a MySQL database, starts the containers, and provides commands to manage the site.
 
-Clone the repository or download the script file (`project.sh`) to your desired location.
-Make the script executable:
-   ```bash
-   chmod +x project.sh
+## Prerequisites ##
+Linux operating system (tested on Ubuntu)
+Bash shell
+Internet connectivity
+Usage
+Make sure you have execution permission for the script. If not, grant it using the command:
 
-## Check Dependencies
+chmod +x project.sh
 
-This command checks if Docker and Docker Compose are installed on the system. If they are not present, it installs the missing packages.
-./project.sh check
+## Run the script: ##
+./project.sh 
 
-## Start container 
+## Available commands: ##
 
-This subcommand starts the containers for the specified site, enabling it to be accessible.
-./project.sh start
+./project start: Starts the WordPress containers.
+./project stop: Stops the WordPress containers.
+./project delete: Stops and deletes the WordPress site containers and local files.
 
-## Stop container
+## Script Explanation ##
+The script performs the following steps:
 
-This subcommand stops the containers for the specified site, disabling it.
-./project.sh stop
-Replace <site_name> with the name of the site you want to disable.
+Checks if Docker is installed. If not, it installs Docker and adds the current user to the docker group.
+Checks if Docker Compose is installed. If not, it installs Docker Compose.
+Prompts the user to enter a site name and creates a directory with the specified name.
+Creates a docker-compose.yml file in the site directory with the necessary configurations for MySQL and WordPress containers.
+Starts the containers using Docker Compose.
+Checks if the WordPress site is reachable by sending an HTTP request to the specified IP and port.
+Provides additional commands to manage the site:
+start: Starts the WordPress containers.
+stop: Stops the WordPress containers.
+delete: Stops and deletes the WordPress site containers and local files.
 
-## Delete Site
-
-This command deletes the containers and local files for the specified site.
-./project.sh delete <site_name>
-Replace <site_name> with the name of the site you want to delete.
-
-Note: Deleting a site will permanently remove all associated containers and local files. Proceed with caution.
+## Notes
+You may need to modify the IP address (15.152.40.162) in the script to match your own server's IP address or domain name.
+The script assumes it is running as a user with sufficient permissions to execute Docker-related commands.
+Take caution when using the delete command, as it permanently deletes the site containers and local files.
+Feel free to modify and adapt the script to suit your specific needs.
