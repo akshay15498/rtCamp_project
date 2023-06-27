@@ -12,15 +12,15 @@ Make the script executable:
 This command checks if Docker and Docker Compose are installed on the system. If they are not present, it installs the missing packages.
 ./project.sh check
 
-## Enable Site <site_name>
+## Start container 
 
 This subcommand starts the containers for the specified site, enabling it to be accessible.
-./project.sh enable 
+./project.sh start
 
-## Disable Site
+## Stop container
 
 This subcommand stops the containers for the specified site, disabling it.
-./project.sh disable <site_name>
+./project.sh stop
 Replace <site_name> with the name of the site you want to disable.
 
 ## Delete Site
